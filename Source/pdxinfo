@@ -1,0 +1,8 @@
+name=Template Game
+author=Your Name
+description=A Playdate game template using C
+bundleID=com.yourname.template_c
+version=1.0.0
+buildNumber=1
+imagePath=images/
+launchSoundPath=sounds/

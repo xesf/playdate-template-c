@@ -1,0 +1,21 @@
+# Build artifacts
+*.pdx/
+build/
+build-device/
+*.o
+*.d
+pdex.dylib
+
+# macOS
+.DS_Store
+
+# Backup files
+*~
+*.bak
+
+# Simulator folders
+Data/
+Games/
+!Screenshots/
+
+template.pdx/

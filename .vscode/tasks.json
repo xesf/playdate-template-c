@@ -1,0 +1,83 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Playdate: CMake Configure",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-B",
+                "build",
+                "-DCMAKE_BUILD_TYPE=Debug",
+                "-DCMAKE_C_COMPILER=clang"
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Playdate: Build",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "build"
+            ],
+            "group": "build",
+            "problemMatcher": ["$clang"],
+            "dependsOn": ["Playdate: CMake Configure"],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Playdate: Build Device",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-B",
+                "build-device",
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DTOOLCHAIN=armgcc",
+                "--toolchain=${env:PLAYDATE_SDK_PATH}/C_API/buildsupport/arm.cmake"
+            ],
+            "group": "build",
+            "problemMatcher": ["$gcc"],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Playdate: Build Device (compile)",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "build-device"
+            ],
+            "group": "build",
+            "problemMatcher": ["$gcc"],
+            "dependsOn": ["Playdate: Build Device"],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Playdate: Clean",
+            "type": "shell",
+            "command": "rm -rf build build-device",
+            "group": "build",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        }
+    ]
+}

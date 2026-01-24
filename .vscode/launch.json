@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Playdate: Debug (LLDB)",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${userHome}/Developer/PlaydateSDK/bin/Playdate Simulator.app",
+            "args": ["${workspaceFolder}/template.pdx"],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "Playdate: Build",
+            "sourceMap": {
+                ".": "${workspaceFolder}"
+            }
+        }
+    ]
+}
