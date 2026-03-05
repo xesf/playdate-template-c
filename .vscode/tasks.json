@@ -35,7 +35,7 @@
             }
         },
         {
-            "label": "Playdate: Build Device",
+            "label": "Playdate: CMake Configure Device",
             "type": "shell",
             "command": "cmake",
             "args": [
@@ -53,7 +53,7 @@
             }
         },
         {
-            "label": "Playdate: Build Device (compile)",
+            "label": "Playdate: Build Device",
             "type": "shell",
             "command": "cmake",
             "args": [
@@ -62,7 +62,6 @@
             ],
             "group": "build",
             "problemMatcher": ["$gcc"],
-            "dependsOn": ["Playdate: Build Device"],
             "presentation": {
                 "reveal": "always",
                 "panel": "shared"
@@ -71,9 +70,77 @@
         {
             "label": "Playdate: Clean",
             "type": "shell",
-            "command": "rm -rf build build-device",
+            "command": "rm -rf build build-device build-demo build-demo-device",
             "group": "build",
             "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Playdate: CMake Configure Demo",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-B",
+                "build-demo",
+                "-DCMAKE_BUILD_TYPE=Debug",
+                "-DCMAKE_C_COMPILER=clang",
+                "-DDEMO=ON"
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Playdate: Build Demo",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "build-demo"
+            ],
+            "group": "build",
+            "problemMatcher": ["$clang"],
+            "dependsOn": ["Playdate: CMake Configure Demo"],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Playdate: CMake Configure Demo Device",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-B",
+                "build-demo-device",
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DTOOLCHAIN=armgcc",
+                "-DDEMO=ON",
+                "--toolchain=${env:PLAYDATE_SDK_PATH}/C_API/buildsupport/arm.cmake"
+            ],
+            "group": "build",
+            "problemMatcher": ["$gcc"],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Playdate: Build Demo Device",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "build-demo-device"
+            ],
+            "group": "build",
+            "problemMatcher": ["$gcc"],
             "presentation": {
                 "reveal": "always",
                 "panel": "shared"

@@ -12,6 +12,18 @@
             "sourceMap": {
                 ".": "${workspaceFolder}"
             }
+        },
+        {
+            "name": "Playdate: Debug Demo (LLDB)",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${userHome}/Developer/PlaydateSDK/bin/Playdate Simulator.app",
+            "args": ["${workspaceFolder}/template.pdx"],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "Playdate: Build Demo",
+            "sourceMap": {
+                ".": "${workspaceFolder}"
+            }
         }
     ]
 }

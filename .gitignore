@@ -2,9 +2,12 @@
 *.pdx/
 build/
 build-device/
+build-demo/
+build-demo-device/
 *.o
 *.d
 pdex.dylib
+pdex.elf
 
 # macOS
 .DS_Store
